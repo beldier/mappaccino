@@ -30,57 +30,57 @@ fun MapBoxMap(
     modifier: Modifier = Modifier,
     point: Point?,
 ) {
-    val context = LocalContext.current
-    val marker = remember(context) {
-        context.getDrawable(R.drawable.marker)!!.toBitmap()
-    }
-    var pointAnnotationManager: PointAnnotationManager? by remember {
-        mutableStateOf(null)
-    }
-    MapboxOptions.accessToken = "PLACE YOUR TOKEN HERE"
-
-    AndroidView(
-        factory = {
-            MapView(
-                it,
-                MapInitOptions(context = context)
-            ).also { mapView ->
-
-                mapView.getMapboxMap()
-                    .loadStyleUri("PLACE YOUR URL HERE")
-                mapView.getMapboxMap().setBounds(
-                    CameraBoundsOptions.Builder()
-                        .bounds(
-                            CoordinateBounds(
-                                Point.fromLngLat(-66.1490322325618, -17.396410324535587),
-                                Point.fromLngLat(-66.14115936192975, -17.390951243427203),
-                                false
-                            )
-                        )
-                        .build()
-                )
-                val annotationApi = mapView.annotations
-                pointAnnotationManager = annotationApi.createPointAnnotationManager()
-            }
-        },
-        update = { mapView ->
-            if (point != null) {
-                pointAnnotationManager?.let {
-                    it.deleteAll()
-                    val pointAnnotationOptions = PointAnnotationOptions()
-                        .withPoint(point)
-                        .withIconImage(marker)
-
-
-                    it.create(pointAnnotationOptions)
-                    mapView.getMapboxMap()
-                        .setCamera(
-                            CameraOptions.Builder().zoom(18.0).pitch(60.0).center(point).build()
-                        )
-                }
-            }
-            NoOpUpdate
-        },
-        modifier = modifier
-    )
+//    val context = LocalContext.current
+//    val marker = remember(context) {
+//        context.getDrawable(R.drawable.marker)!!.toBitmap()
+//    }
+//    var pointAnnotationManager: PointAnnotationManager? by remember {
+//        mutableStateOf(null)
+//    }
+//    MapboxOptions.accessToken = "PLACE YOUR TOKEN HERE"
+//
+//    AndroidView(
+//        factory = {
+//            MapView(
+//                it,
+//                MapInitOptions(context = context)
+//            ).also { mapView ->
+//
+//                mapView.getMapboxMap()
+//                    .loadStyleUri("PLACE YOUR URL HERE")
+//                mapView.getMapboxMap().setBounds(
+//                    CameraBoundsOptions.Builder()
+//                        .bounds(
+//                            CoordinateBounds(
+//                                Point.fromLngLat(-66.1490322325618, -17.396410324535587),
+//                                Point.fromLngLat(-66.14115936192975, -17.390951243427203),
+//                                false
+//                            )
+//                        )
+//                        .build()
+//                )
+//                val annotationApi = mapView.annotations
+//                pointAnnotationManager = annotationApi.createPointAnnotationManager()
+//            }
+//        },
+//        update = { mapView ->
+//            if (point != null) {
+//                pointAnnotationManager?.let {
+//                    it.deleteAll()
+//                    val pointAnnotationOptions = PointAnnotationOptions()
+//                        .withPoint(point)
+//                        .withIconImage(marker)
+//
+//
+//                    it.create(pointAnnotationOptions)
+//                    mapView.getMapboxMap()
+//                        .setCamera(
+//                            CameraOptions.Builder().zoom(18.0).pitch(60.0).center(point).build()
+//                        )
+//                }
+//            }
+//            NoOpUpdate
+//        },
+//        modifier = modifier
+//    )
 }

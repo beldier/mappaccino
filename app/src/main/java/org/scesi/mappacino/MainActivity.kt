@@ -21,6 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import org.scesi.mappacino.ui.LocationService
 import com.mapbox.geojson.Point
 import kotlinx.coroutines.delay
+import org.scesi.mappacino.ui.home.HomeScreen
 import org.scesi.mappacino.ui.theme.MappacinoTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MapScreen()
+                    HomeScreen()
                 }
             }
         }
