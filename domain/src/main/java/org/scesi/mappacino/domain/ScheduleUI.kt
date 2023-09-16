@@ -1,6 +1,6 @@
 package org.scesi.mappacino.domain
 
-data class Schedule(
+data class ScheduleUI(
     val day: String,
     val start: String,
     val end: String,

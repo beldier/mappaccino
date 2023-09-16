@@ -1,7 +1,7 @@
 package org.scesi.mappacino.domain
 
-data class Subject(
+data class SubjectUI(
     val code: String,
     val name: String,
-    val groups: List<Group> = listOf()
+    var groups: List<GroupUI> = listOf()
 )

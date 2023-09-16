@@ -3,6 +3,7 @@ package org.scesi.mappacino.data
 import org.koin.core.annotation.Factory
 import org.scesi.mappacino.data.datasource.SubjectLocalDataSource
 import org.scesi.mappacino.data.datasource.SubjectRemoteDataSource
+import org.scesi.mappacino.domain.Error
 
 @Factory
 class SubjectRepository(
@@ -10,17 +11,15 @@ class SubjectRepository(
     private val localDataSource: SubjectLocalDataSource
 ) {
 
-    val subjects = localDataSource.subjects
+    val semesters = localDataSource.semesters
 
     suspend fun requestSubjects(): Error? {
-        val movies = remoteDataSource.findSubjects()
-        if (localDataSource.isEmpty()) {
-
+//        if (localDataSource.isEmpty()) {
+            val movies = remoteDataSource.findSubjects()
             movies.fold(ifLeft = { return it }) {
-                // TODO save in database
-//                localDataSource.save(it)
+                localDataSource.save(it)
             }
-        }
+//        }
         return null
     }
 
