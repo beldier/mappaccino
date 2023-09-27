@@ -17,6 +17,31 @@ data class RemoteResult(
     val levels: List<Levels> = listOf()
 )
 
+data class Levels(
+    @SerializedName("code")
+    val code: String? = null,
+    @SerializedName("subjects")
+    val subjects: List<Subjects> = listOf()
+)
+
+data class Subjects(
+    @SerializedName("code")
+    val code: String? = null,
+    @SerializedName("name")
+    val name: String? = null,
+    @SerializedName("groups")
+    val groups: List<Groups> = listOf()
+)
+
+data class Groups(
+    @SerializedName("code")
+    val code: String? = null,
+    @SerializedName("schedule")
+    val schedule: List<Schedule> = listOf(),
+    @SerializedName("teacher")
+    val teacher: String? = null
+)
+
 data class Schedule(
     @SerializedName("day")
     val day: String? = null,
@@ -32,30 +57,4 @@ data class Schedule(
     val teacher: String? = null,
     @SerializedName("isClass")
     val isClass: Boolean? = null
-)
-
-
-data class Groups(
-    @SerializedName("code")
-    val code: String? = null,
-    @SerializedName("schedule")
-    val schedule: List<Schedule> = listOf(),
-    @SerializedName("teacher")
-    val teacher: String? = null
-)
-
-data class Levels(
-    @SerializedName("code")
-    val code: String? = null,
-    @SerializedName("subjects")
-    val subjects: List<Subjects> = listOf()
-)
-
-data class Subjects(
-    @SerializedName("code")
-    val code: String? = null,
-    @SerializedName("name")
-    val name: String? = null,
-    @SerializedName("groups")
-    val groups: List<Groups> = listOf()
 )

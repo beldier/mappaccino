@@ -1,14 +1,19 @@
 package org.scesi.mappacino
 
 import android.app.Application
+import android.content.Context
+import androidx.room.Room
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
+import org.koin.core.annotation.Named
+import org.koin.core.annotation.Single
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.ksp.generated.module
 import org.scesi.mappacino.data.DataModule
+import org.scesi.mappacino.data.database.CampusDatabase
 import org.scesi.mappacino.usescases.UseCasesModule
 
 fun Application.initDI() {
@@ -22,5 +27,17 @@ fun Application.initDI() {
 @Module
 @ComponentScan
 class AppModule{
+
+//    @Single
+//    @Named("applicationContext")
+//    fun applicationContext(ctx: Context) = ctx
+    @Single
+    fun subjectDatabase(ctx: Context) = Room.databaseBuilder(
+        ctx,
+        CampusDatabase::class.java, "campus-db"
+    ).build()
+
+    @Single
+    fun movieDao(db: CampusDatabase) = db.subjectDao()
 
 }

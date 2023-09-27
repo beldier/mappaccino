@@ -1,0 +1,18 @@
+[
+  {
+    "id": 617,
+    "facultad": "FCYT",
+    "nombre": "Aula 617",
+    "descripcion": "Al frente del centro de estudiantes de fisica",
+    "latitud": -17.393081,
+    "longitud": -66.144899
+  },
+  {
+    "id": 640,
+    "facultad": "FCYT",
+    "nombre": "Aula 640",
+    "descripcion": "Gallinero",
+    "latitud": -17.394651,
+    "longitud": -66.145393
+  }
+]

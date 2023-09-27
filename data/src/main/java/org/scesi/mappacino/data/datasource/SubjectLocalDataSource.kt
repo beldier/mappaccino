@@ -1,11 +1,13 @@
 package org.scesi.mappacino.data.datasource
 
 import kotlinx.coroutines.flow.Flow
-import org.scesi.mappacino.domain.Subject
+import org.scesi.mappacino.domain.SubjectUI
+import org.scesi.mappacino.domain.Error
+import org.scesi.mappacino.domain.SemesterUI
 
 interface SubjectLocalDataSource {
-    val subjects: Flow<List<Subject>>
+    val semesters: Flow<List<SemesterUI>>
     suspend fun isEmpty(): Boolean
-    fun findById(id: Int): Flow<Subject>
-    suspend fun save(subjects: List<Subject>): Error?
+    fun findById(id: Int): Flow<SubjectUI>
+    suspend fun save(subjects: List<SemesterUI>): Error?
 }

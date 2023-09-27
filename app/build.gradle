@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.kapt'
+    id 'kotlin-kapt'
     id 'io.gitlab.arturbosch.detekt'
     id 'com.google.devtools.ksp'
 
@@ -106,5 +106,8 @@ dependencies {
     ksp "io.insert-koin:koin-ksp-compiler:$koin_ksp_version"
     implementation "io.arrow-kt:arrow-core:1.1.0"
 
+    implementation 'androidx.room:room-runtime:2.5.2'
+    implementation 'androidx.room:room-ktx:2.5.2'
+    kapt 'androidx.room:room-compiler:2.5.2'
 
 }
