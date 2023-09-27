@@ -7,6 +7,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
+import org.koin.core.annotation.Named
 import org.koin.core.annotation.Single
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
@@ -26,6 +27,10 @@ fun Application.initDI() {
 @Module
 @ComponentScan
 class AppModule{
+
+//    @Single
+//    @Named("applicationContext")
+//    fun applicationContext(ctx: Context) = ctx
     @Single
     fun subjectDatabase(ctx: Context) = Room.databaseBuilder(
         ctx,

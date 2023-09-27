@@ -12,13 +12,15 @@ import org.koin.android.annotation.KoinViewModel
 import org.scesi.mappacino.data.toError
 import org.scesi.mappacino.domain.Error
 import org.scesi.mappacino.domain.SemesterUI
+import org.scesi.mappacino.usescases.GetClassRoomCoordinateUseCase
 import org.scesi.mappacino.usescases.GetSemestersUseCase
 import org.scesi.mappacino.usescases.RequestSubjectsUseCase
 
 @KoinViewModel
 class HomeViewModel(
     getSemestersUseCase: GetSemestersUseCase,
-    private val requestSubjectsUseCase: RequestSubjectsUseCase
+    private val requestSubjectsUseCase: RequestSubjectsUseCase,
+    private val getClassRoomCoordinateUseCase: GetClassRoomCoordinateUseCase
 ) : ViewModel() {
 
 
@@ -35,12 +37,18 @@ class HomeViewModel(
                 _state.update {
                     _state.value.copy(loading = false, error = error)
                 }
+                
+                val classroom = getClassRoomCoordinateUseCase("617")
+
+                classroom?.let { it.id }
                 getSemestersUseCase()
                     .catch { cause -> _state.update {
                         it.copy(error = cause.toError()) } }
                     .collect { semesters ->
                         _state.update { UiState(semesters = semesters) }
                     }
+
+
 
             } catch (e: Exception) {
                 e.printStackTrace()
