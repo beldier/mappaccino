@@ -8,8 +8,8 @@ class ClassroomRepository(
     private val classRoomLocalDataSource: ClassRoomLocalDataSource
 ) {
 
-    suspend fun getClassroomLocation(query: String): ClassroomLocationUI? {
+    suspend fun getClassroomLocation(query: String): List<ClassroomLocationUI> {
         val locations = classRoomLocalDataSource.getClassroomsLocations()
-        return locations?.firstOrNull { it.id.toString() == query || it.name == query }
+        return locations?.filter { it.id.toString().contains(query)|| it.name.contains(query)  } ?: listOf()
     }
 }

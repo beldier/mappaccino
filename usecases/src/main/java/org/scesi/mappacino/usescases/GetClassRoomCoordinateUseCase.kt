@@ -7,6 +7,6 @@ import org.scesi.mappacino.domain.ClassroomLocationUI
 
 @Factory
 class GetClassRoomCoordinateUseCase(private val classroomRepository: ClassroomRepository) {
-    suspend operator fun invoke(query: String): ClassroomLocationUI? =
+    suspend operator fun invoke(query: String): List<ClassroomLocationUI> =
         classroomRepository.getClassroomLocation(query)
 }

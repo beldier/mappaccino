@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 object RemoteConnection {
-    private const val SERVER_URL = "http://2023.cappuchino.scesi.umss.edu.bo/"
+    private const val SERVER_URL = "https://capuchino-scesi.web.app/"
 
     private val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY

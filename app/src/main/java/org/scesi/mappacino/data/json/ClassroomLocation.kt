@@ -25,6 +25,6 @@ fun ClassroomLocationDTO.toClassroomLocationUI(): ClassroomLocationUI = Classroo
     name = this.name?: "Aula sin nombre",
     faculty = this.faculty?:"Facultad",
     description = this.description?:"Descripcion vacia",
-    lattitude = this.lattitude?:0.0,
+    latitude = this.lattitude?:0.0,
     longitude = this.longitude?:0.0,
 )
