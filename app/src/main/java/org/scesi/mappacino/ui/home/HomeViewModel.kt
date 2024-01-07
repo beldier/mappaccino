@@ -77,8 +77,9 @@ class HomeViewModel(
     }
 
     fun updatePoint(point: Point) {
+
         _mapState.update {
-            _mapState.value.copy(point = point)
+            _mapState.value.copy(point = AppPoint(id = Math.random(), point = point))
         }
     }
 
@@ -93,6 +94,12 @@ class HomeViewModel(
     )
 
     data class MapState(
-        val point: Point? = null,
+        val point: AppPoint = AppPoint(),
+    )
+
+    // TODO find another way to emit same values for coordinates
+    data class AppPoint(
+        val id: Double = 0.0,
+        val point: Point? = null
     )
 }

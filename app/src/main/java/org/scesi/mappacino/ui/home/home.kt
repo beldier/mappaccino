@@ -13,6 +13,7 @@ import org.koin.androidx.compose.koinViewModel
 import org.scesi.mappacino.MainMapViewComposable
 import org.scesi.mappacino.ui.shared.DockedSearchBarComponent
 
+
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
     val dataState by viewModel.state.collectAsState()

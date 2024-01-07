@@ -14,13 +14,14 @@ import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportS
 import com.mapbox.maps.plugin.animation.MapAnimationOptions
 import com.mapbox.maps.plugin.compass.generated.CompassSettings
 import com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings
+import org.scesi.mappacino.ui.home.HomeViewModel
 
 val DEFAULT_POSITION: Point = Point.fromLngLat(-66.14486399148288, -17.3932635439369)
 const val ANIMATION_DURATION:Long = 5000
 @Composable
 @OptIn(MapboxExperimental::class)
 fun MainMapViewComposable(
-    point: Point?,
+    appPoint: HomeViewModel.AppPoint,
 ) {
     MapboxOptions.accessToken = BuildConfig.MAPBOX_TOKEN
     val mapViewportState = rememberMapViewportState() {
@@ -33,7 +34,7 @@ fun MainMapViewComposable(
         MapAnimationOptions.mapAnimationOptions { duration(ANIMATION_DURATION) }
     }
 
-    point?.let {
+    appPoint.point?.let {
         flyTo(mapViewportState, it)
         MapAnimationOptions.mapAnimationOptions { duration(ANIMATION_DURATION) }
     }
